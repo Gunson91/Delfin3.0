@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Chairman {
@@ -7,8 +8,8 @@ public class Chairman {
     Filehandler filehandler = new Filehandler();
 
     public void chairmanMenu() throws IOException {
-        String[] chairmanMenuChoices = {"1. Create new member", "2. Check member with given memberID",
-                "3. Print all fitness members", "4. Print all fitness members", "9. Exit chairman menu"};
+        String[] chairmanMenuChoices = {"1. Create new member", "2. Look up member with a given memberID",
+                "3. Print all fitness members", "4. Print all competition members", "9. Exit chairman menu"};
         Menu chairmanMenu = new Menu("Chairman Menu", "Pick the number:", chairmanMenuChoices);
         boolean runWhile = true;
         do {
@@ -21,16 +22,16 @@ public class Chairman {
                     filehandler.checkMember();
                     break;
                 case 3:
-                    getFitnessMembers();
+                    printFitnessMembers();
                     break;
                 case 4:
-                    getCompMembers();
+                    printCompMembers();
                     break;
                 case 9:
-                    System.out.println("Going back to main menu...");
+                    ui.println("Going back to main menu...");
                     runWhile = false;
                 default:
-                    System.out.println("Invalid choice");
+                    ui.println("Invalid choice");
                     break;
             }
         } while (runWhile);
@@ -39,29 +40,39 @@ public class Chairman {
     public void createMember() throws IOException {
         int newId = filehandler.nextAvailableMemberId();
         filehandler.saveNewMemberInFile(userInputForNewMember());
-        System.out.println("New member was added with the ID:" + newId);
+        ui.println("New member was added with the ID:" + newId);
     }
 
-    public void getFitnessMembers() {
-        System.out.println(filehandler.getFitnessList());
+    //    Method written by Emil
+    public void printFitnessMembers() {
+        ArrayList<FitnessSwimmer> fitList = filehandler.getFitnessList();
+        for (int i = 0; i < fitList.size(); i++) {
+            ui.print("ID: " + fitList.get(i).getMemberID() + ", Name: " + fitList.get(i).getfName() + " " +
+                    fitList.get(i).getlName() + ", Birth year:  " + fitList.get(i).getBirthYear() + "\n");
+        }
+
     }
 
-    public void getCompMembers() {
-        System.out.println(filehandler.getCompList());
+    //    Method written by Emil
+    public void printCompMembers() {
+        ArrayList<CompSwimmer> compList = filehandler.getCompList();
+        for (int i = 0; i < compList.size(); i++) {
+            ui.print("ID: " + compList.get(i).getMemberID() + ", Name: " + compList.get(i).getfName() + " " +
+                    compList.get(i).getlName() + ", Birth year:  " + compList.get(i).getBirthYear() + "\n");
+        }
     }
 
     private String userInputForNewMember() {
 
-        System.out.println("Insert members first name: ");
-        String fName = in.nextLine();
-        System.out.println("Insert members last name: ");
-        String lName = in.nextLine();
-        System.out.println("Insert members birth year: ");
-        String birthYear = in.nextLine();
+        ui.println("Insert members first name: ");
+        String fName = ui.readString();
+        ui.println("Insert members last name: ");
+        String lName = ui.readString();
+        ui.println("Insert members birth year: ");
+        String birthYear = ui.readBirthYear();
         System.out.println("Does the user want an (1)Active or (2)Passive membership?");
-        int i = in.nextInt();
-        in.nextLine();//Scannerbug
-        boolean isActive = (i == 1);
+
+        boolean isActive = ui.intToBool();
         System.out.println("Does the user want to have a (1)Fitness or (2)Competition membership?");
         boolean isFitness = ui.intToBool();
         boolean isComp = !isFitness;

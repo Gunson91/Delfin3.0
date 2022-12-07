@@ -8,6 +8,8 @@ public class Coach {
     Filehandler f = new Filehandler();
     Scanner in = new Scanner(System.in);
 
+    ArrayList<Member> allMemberList = f.getAllMembersList();
+
     ArrayList<CompSwimmer> compList = f.getCompList();
     ArrayList<CompSwimmer> crawl = new ArrayList<>();
     ArrayList<CompSwimmer> breaststroke = new ArrayList<>();
@@ -141,18 +143,18 @@ public class Coach {
     } //Alle med pair-programming
 
     private void printTop5(ArrayList<CompSwimmer> listname, String discipline) { //Alle med pair-programming
-        System.out.println("--------------------------------");
-        System.out.println("TOP 5 " + discipline + " SWIMMERS");
-        System.out.println("ID -- LAST NAME -- TIME");
-        System.out.println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
+        ui.println("--------------------------------");
+        ui.println("TOP 5 " + discipline + " SWIMMERS");
+        ui.println("ID -- LAST NAME -- TIME");
+        ui.println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
         //System.out.println("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾");
 
         if (listname.size() == 0) {
-            System.out.println("There are no competition swimmers in this discipline");
+            ui.println("There are no competition swimmers in this discipline");
         } else {
             for (int i = 0; i < listname.size() && i < 5; i++) {
                 System.out.printf("%-6s%-13s%-15s\n", listname.get(i).getMemberID(), listname.get(i).getlName(), listname.get(i).getPb());
-                System.out.println("----------------------------");
+                ui.println("----------------------------");
             }
         }
     }

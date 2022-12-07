@@ -28,10 +28,10 @@ public class Cashier { //PairProgramming
                     registerPayment();
                     break;
                 case 9:
-                    System.out.println("Going back to main menu...");
+                    ui.println("Going back to main menu...");
                     runWhile = false;
                 default:
-                    System.out.println("Invalid choice");
+                    ui.println("Invalid choice");
                     break;
             }
         } while (runWhile);
@@ -74,6 +74,7 @@ public class Cashier { //PairProgramming
                 isActive = allMembersList.get(i).isActive();
             }
         }
+
 
         if (!isActive) {
             return 500;
