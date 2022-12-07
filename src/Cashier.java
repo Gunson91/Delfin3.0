@@ -42,18 +42,24 @@ public class Cashier { //PairProgramming
         int price = -1;
         String pChoice = "";
         memberId = ui.readInt("Enter member ID: ");
-        price = generatePrice(memberId);
-        ui.println("This member has to pay: " + price + " DKK");
+        //FIXME check om member findes
+        if (memberId > allMemberList.size() || memberId < 0) {
+            ui.println("This member does not exist");
+//            new Cashier().cashierMenu();
+        } else {
+            price = generatePrice(memberId);
+            ui.println("This member has to pay: " + price + " DKK");
 
-        pChoice = ui.readString("Confirm payment for member: " + memberId + "\n Enter true or false: ");
+            pChoice = ui.readString("Confirm payment for member: " + memberId + "\n Enter true or false: ");
 
-        if (pChoice.equalsIgnoreCase("true")) {
-            f.editMember(memberId, 9, "true");
+            if (pChoice.equalsIgnoreCase("true")) {
+                f.editMember(memberId, 9, "true");
 
-        } else if (pChoice.equalsIgnoreCase("false")) {
-            f.editMember(memberId, 9, "false");
-        }else{
-            System.out.println("Something went wrong in registerPayment()");
+            } else if (pChoice.equalsIgnoreCase("false")) {
+                f.editMember(memberId, 9, "false");
+            } else {
+                ui.println("You didn't type \"true\" or \"false\", going back to cashier menu");
+            }
         }
     }
 
@@ -85,25 +91,25 @@ public class Cashier { //PairProgramming
 
     public void viewMissingPayments() {
         ui.println("ALL MEMBERS WITH MISSING PAYMENTS: ");
-        for (int i = 0; i < allMembersList.size(); i++) {
-            if (!allMembersList.get(i).hasPaid()) {
-                System.out.println("ID: " + allMembersList.get(i).getMemberID() + ", Last name: "
-                        + allMembersList.get(i).getlName()+", Amount: "
-                        + generatePrice(allMembersList.get(i).getMemberID())+" DKK" );
+        for (int i = 0; i < allMemberList.size(); i++) {
+            if (!allMemberList.get(i).hasPaid()) {
+                ui.println("ID: " + allMemberList.get(i).getMemberID() + ", Last name: "
+                        + allMemberList.get(i).getlName() + ", Amount: "
+                        + generatePrice(allMemberList.get(i).getMemberID()) + " DKK");
             }
         }
     }
 
-    public void viewMemberPaymentStatus(){
+    public void viewMemberPaymentStatus() {
         int memberId;
         int price = -1;
         String pChoice = "";
         memberId = ui.readInt("Enter member ID: ");
         price = generatePrice(memberId);
 
-        if(!allMembersList.get(memberId).hasPaid()){
+        if (!allMemberList.get(memberId).hasPaid()) {
             ui.println("This member has to pay: " + price + " DKK");
-        }else{
+        } else {
             ui.println("This member has paid: " + price + " DKK");
         }
 

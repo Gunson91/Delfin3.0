@@ -63,18 +63,16 @@ public class Chairman {
         in.nextLine();//Scannerbug
         boolean isActive = (i == 1);
         System.out.println("Does the user want to have a (1)Fitness or (2)Competition membership?");
-        i = in.nextInt();
-        in.nextLine();//Scannerbug
-        boolean isFitness = (i == 1);
-        boolean isComp = (i == 2);
-        //TODO IF isComp=true skal brugeren vælge en dicipline, som skal gemmes med
+        boolean isFitness = ui.intToBool();
+        boolean isComp = !isFitness;
+
         String compChoice = "noDiscipline";
         if (isComp == true) {
             compChoice = compChoice();
         }
         //TODO giv member en mulighed for at betal on the spot
-        System.out.println("Has the user payed? Write true/false");
-        boolean hasPayed = Boolean.parseBoolean(in.nextLine());
+        System.out.println("Has the user payed? (1)yes (2)no");
+        boolean hasPayed = ui.intToBool();
 
 //        System.out.println("Date for registration: ");
 //        //LocalDateTime.now().getYear()
@@ -83,7 +81,7 @@ public class Chairman {
 //        // Print to see what it returns System.out.println(LocalDateTime.now().getYear());
 
         String newMemberData = fName + ";" + lName + ";" + birthYear + ";" + isActive + ";" + isFitness + ";" + isComp + ";"
-                + compChoice + ";" + "0.0" + ";" + hasPayed + ";" ;
+                + compChoice + ";" + "0.0" + ";" + hasPayed + ";";
         //System.out.println(newMemberData); //For debugging
         return newMemberData;
 

@@ -9,7 +9,7 @@ public class CompSwimmer extends Member {
         this.pb = pb;
     }
 
-    public double getPb(){
+    public double getPb() {
         return pb;
     }
 

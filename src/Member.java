@@ -27,13 +27,28 @@ public class Member {
         this.isActive = isActive;
     }
     //Constructor uden hasPaid boolean
-    public Member(int memberID, String fName, String lName, int birthYear) {
-        this.memberID = memberID;
-        this.fName = fName;
-        this.lName = lName;
-        this.birthYear = birthYear;
-        isJunior = (2022 - birthYear < 18) ? true : false;
+//    public Member(int memberID, String fName, String lName, int birthYear) {
+//        this.memberID = memberID;
+//        this.fName = fName;
+//        this.lName = lName;
+//        this.birthYear = birthYear;
+//        isJunior = (2022 - birthYear < 18) ? true : false;
+//    }
 
+    public void setMemberID(int memberID) {
+        this.memberID = memberID;
+    }
+
+    public void setFName(String fName) {
+        this.fName = fName;
+    }
+
+    public void setLName(String lName) {
+        this.lName = lName;
+    }
+
+    public void setBirthYear(int birthYear) {
+        this.birthYear = birthYear;
     }
 
     public int getMemberID() {

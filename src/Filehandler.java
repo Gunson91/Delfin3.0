@@ -14,22 +14,6 @@ public class Filehandler {
     private ArrayList<FitnessSwimmer> fitnessList = new ArrayList<>();
     Scanner in = new Scanner(System.in);
 
-    //TODO skal loadFile() metoden below bruges? - HVIS saveNewMemberInFile() laver en ny memberData.txt, så behøver man ikke loadFile()-
-
-//    public void loadFile() {
-//        try {
-//            File memberData = new File(fileName);
-//            if (memberData.createNewFile()) {
-//                //System.out.println("File created: " + memberData.getName());
-//            } else {
-//                //System.out.println("File already exists.");
-//            }
-//        } catch (IOException e) {
-//            System.out.println("Something went wrong in Filehandler.createNewFile()");
-//            e.printStackTrace();
-//        }
-//    }
-
     public ArrayList getAllMembersList() {
         updateMemberList();
         return memberList;
@@ -44,6 +28,7 @@ public class Filehandler {
         updateFitnessList();
         return fitnessList;
     }
+
 
     public void saveNewMemberInFile(String newMemberData) {
         try {
@@ -117,8 +102,6 @@ public class Filehandler {
         int birthYear = Integer.parseInt(list.get(3));
         boolean isActive = Boolean.parseBoolean(list.get(4));
         boolean hasPaid = Boolean.parseBoolean(list.get(9));
-
-
 
         Member newMember = new Member(memberID, fName, lName, birthYear, hasPaid,isActive);
         memberList.add(newMember);

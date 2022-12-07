@@ -18,8 +18,7 @@ public class Coach {
 
     public void coachMenu() {
         Menu cMenu = new Menu("---COACH MENU---", "...", new String[]{"1. View teams sorted by age",
-                "2. View top 5", "3. Register new personal records", "4. View swimmers personal record"});
-        //int choice = cMenu.readChoice();
+                "2. View top 5", "3. Register new personal records", "4. View swimmers personal best", "9. Exit coach menu"});
         boolean runWhile = true;
         do {
             cMenu.printMenu();
@@ -27,8 +26,9 @@ public class Coach {
                 case 1 -> new Coach().viewAgeSortedTeams();
                 case 2 -> new Coach().viewTop5();
                 case 3 -> new Coach().registerNewRecord();
-                case 4 -> System.out.println("View swimmers pb"); //TODO viewPersonalBest();
-                default -> runWhile = false;
+                case 4 -> new Coach().viewCompPersonalRecord();
+                case 9 -> runWhile = false;
+                default -> ui.println("Invalid choice");
             }
         } while (runWhile);
     }
@@ -43,9 +43,7 @@ public class Coach {
                 ui.println(compList.get(i).getfName() + " " + compList.get(i).getlName());
             }
         }
-
         ui.println("\n");
-
         ui.println("Competition swimmers over 18: ");
         for (int i = 0; i < compList.size(); i++) {
             if (LocalDateTime.now().getYear() - compList.get(i).getBirthYear() > 18) {
@@ -54,26 +52,46 @@ public class Coach {
         }
     }
 
-    public void viewRecord() {
+    // Method written by Mathias, Emil, Laurits & Martin
+    public void viewCompPersonalRecord() {
+        int memberId;
+        memberId = ui.readInt("Enter member ID: ");
+        boolean validComp = false;
 
+        for (int i = 0; i < compList.size(); i++) {
+            if (compList.get(i).getMemberID() == memberId) {
+                validComp = true;
+                ui.println(compList.get(i).getlName() + " has a pb of " + compList.get(i).getPb() + "s in " +
+                        compList.get(i).getDiscipline());
+            }
+        }
+        if (!validComp) {
+            ui.println("The member with the given Member Id is not a competition swimmer, or does not exist  ¯\\_( ͡❛ ͜ʖ ͡❛)_/¯");
+        }
     }
 
     public void registerNewRecord() {
         boolean validChoice = false;
         int memberID = -1;
         memberID = ui.readInt("Please input the ID of the member you want to change: ");
-        System.out.print("Please type the new record in format \"number.number\": ");
-        double newRecord = -1.0;
 
-        while (!validChoice) {
-            if (in.hasNextDouble()) {
-                newRecord = in.nextDouble();
-                validChoice = true;
-            } else
-                System.err.println("You need to type a number above 0");
-            in.nextLine(); //Scanner bug
+        if (memberID > allMemberList.size() || memberID < 0) {
+            ui.println("This member does not exist");
+        } else {
+            ui.print("Please type the new record like this example \"20,34\": ");
+            double newRecord = -1.0;
+
+            while (!validChoice) {
+                if (in.hasNextDouble()) {
+                    newRecord = in.nextDouble();
+                    validChoice = true;
+                } else
+                    System.err.println("You need to type a number above 0 (remember to use a comma)");
+                in.nextLine(); //Scanner bug
+            }
+            f.editMember(memberID, 8, String.valueOf(newRecord));
         }
-        f.editMember(memberID, 8, String.valueOf(newRecord));
+
     } //Laurits & Martin
 
     private void divideByDiscipline() {
@@ -97,7 +115,6 @@ public class Coach {
         Collections.sort(backstroke, sortByPb);
         Collections.sort(butterfly, sortByPb);
         Collections.sort(medley, sortByPb);
-
     }
 
 

@@ -4,12 +4,11 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         new Main().run();
-        
-
     }
 
     private void run() throws IOException {
-        String[] MenuChoices = {"1. Chairman Menu", "2. Choach Menu",
+
+        String[] MenuChoices = {"1. Chairman Menu", "2. Coach Menu",
                 "3. Cashier Menu", "9. Exit program"};
         Menu mainMenu = new Menu("Welcome back", "Pick the number:", MenuChoices);
         boolean runWhile = true;
