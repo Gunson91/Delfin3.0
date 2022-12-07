@@ -29,6 +29,7 @@ public class Main {
                 case 9:
                     System.out.println("Exiting Program...");
                     runWhile = false;
+                    break;
                 default:
                     System.out.println("Invalid choice");
                     break;
