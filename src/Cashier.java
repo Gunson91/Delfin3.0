@@ -1,6 +1,5 @@
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class Cashier { //PairProgramming
 
@@ -8,11 +7,11 @@ public class Cashier { //PairProgramming
 
     Ui ui = new Ui();
     Filehandler f = new Filehandler();
-    ArrayList<Member> allMembersList = f.getAllMembersList();
+    ArrayList<Member> allMemberList = f.getAllMembersList();
 
     public void cashierMenu() {
         String[] cashierMenuChoices = {"1. View missing payments", "2. View payment status from ID",
-                "3. Register Payment", "9. Exit program"};
+                "3. Register Payment", "9. Exit back to main menu"};
         Menu cashierMenu = new Menu("Welcome back", "Pick the number:", cashierMenuChoices);
         boolean runWhile = true;
         do {
@@ -68,10 +67,10 @@ public class Cashier { //PairProgramming
         boolean isActive = false;
 
 
-        for (int i = 0; i < allMembersList.size(); i++) {
-            if (allMembersList.get(i).getMemberID() == iD) {
-                birthYear = allMembersList.get(i).getBirthYear();
-                isActive = allMembersList.get(i).isActive();
+        for (int i = 0; i < allMemberList.size(); i++) {
+            if (allMemberList.get(i).getMemberID() == iD) {
+                birthYear = allMemberList.get(i).getBirthYear();
+                isActive = allMemberList.get(i).isActive();
             }
         }
 
