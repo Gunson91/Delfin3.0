@@ -24,23 +24,6 @@ public class Member {
         this.hasPaid = hasPaid;
         this.isActive = isActive;
     }
-//    public Member(int memberID, String fName, String lName, int birthYear, boolean isActive) {
-//        this.memberID = memberID;
-//        this.fName = fName;
-//        this.lName = lName;
-//        this.birthYear = birthYear;
-//        isJunior = (2022 - birthYear < 18) ? true : false;
-//        this.isActive = isActive;
-//    }
-
-    //Constructor uden hasPaid boolean
-//    public Member(int memberID, String fName, String lName, int birthYear) {
-//        this.memberID = memberID;
-//        this.fName = fName;
-//        this.lName = lName;
-//        this.birthYear = birthYear;
-//        isJunior = (2022 - birthYear < 18) ? true : false;
-//    }
 
     public void setMemberID(int memberID) {
         this.memberID = memberID;
@@ -78,21 +61,8 @@ public class Member {
         return isActive;
     }
 
-    public void setHasPaid(boolean hasPaid) {
-        this.hasPaid = hasPaid;
-    }
-
     public boolean hasPaid(){
         return hasPaid;
     }
 
-    @Override
-    public String toString() {
-        return "Member{" +
-                "fName='" + fName + '\'' +
-                ", lName='" + lName + '\'' +
-                ", birthYear=" + birthYear +
-                ", isJunior=" + isJunior +
-                '}';
-    }
 }

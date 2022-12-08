@@ -4,11 +4,8 @@ public class CompSwimmer extends Member {
     private String discipline;
 
     public CompSwimmer(int memberID, String fName, String lName, int birthYear, String discipline, double pb) {
-//        super(memberID, fName, lName, birthYear);
-//        super();
         this.discipline = discipline;
         this.pb = pb;
-
         setMemberID(memberID);
         setFName(fName);
         setLName(lName);

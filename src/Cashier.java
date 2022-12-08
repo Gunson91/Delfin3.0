@@ -36,7 +36,7 @@ public class Cashier { //PairProgramming
         } while (runWhile);
     }
 
-    public void registerPayment() {
+    private void registerPayment() {
         int memberId;
         int price = -1;
         String pChoice = "";
@@ -62,7 +62,7 @@ public class Cashier { //PairProgramming
         }
     }
 
-    public int generatePrice(int iD) {
+    private int generatePrice(int iD) {
         int birthYear = -1;
         boolean isActive = false;
 
@@ -89,7 +89,7 @@ public class Cashier { //PairProgramming
         }
     }
 
-    public void viewMissingPayments() {
+    private void viewMissingPayments() {
         ui.println("ALL MEMBERS WITH MISSING PAYMENTS: ");
         for (int i = 0; i < allMemberList.size(); i++) {
             if (!allMemberList.get(i).hasPaid()) {
@@ -100,26 +100,21 @@ public class Cashier { //PairProgramming
         }
     }
 
-    public void viewMemberPaymentStatus() {
+    private void viewMemberPaymentStatus() {
         int memberId;
         int price = -1;
-        String pChoice = "";
-        memberId = ui.readInt("Enter member ID: ");
-        price = generatePrice(memberId);
 
-        if (!allMemberList.get(memberId).hasPaid()) {
-            ui.println("This member has to pay: " + price + " DKK");
-        } else {
-            ui.println("This member has paid: " + price + " DKK");
+        try{
+            memberId = ui.readInt("Enter member ID: ");
+            price = generatePrice(memberId);
+
+            if (!allMemberList.get(memberId).hasPaid()) {
+                ui.println("This member has to pay: " + price + " DKK");
+            } else {
+                ui.println("This member has paid: " + price + " DKK");
+            }
+        }catch (Exception e){
+            ui.println("Member id out of bounds");
         }
-
     }
-
-
-    /* Payment information
-        ungdoms svømmere (<18 år, 1000kr. årligt)
-        seniorsvømmere (>18år, 1600kr årligt)
-        over 60 (>=60 1600kr, * 0.75)
-        passiv (alle, 500kr)
-     */
 }

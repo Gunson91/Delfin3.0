@@ -21,6 +21,4 @@ public class CompSwimmerSorter implements Comparator<CompSwimmer> {
 
         return (int) comparison;
     }
-
-
 }

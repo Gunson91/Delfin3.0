@@ -47,8 +47,8 @@ public class Chairman {
     public void printFitnessMembers() {
         ArrayList<FitnessSwimmer> fitList = filehandler.getFitnessList();
         for (int i = 0; i < fitList.size(); i++) {
-            ui.print("ID: " + fitList.get(i).getMemberID() + ", Name: " + fitList.get(i).getfName() + " " +
-                    fitList.get(i).getlName() + ", Birth year:  " + fitList.get(i).getBirthYear() + "\n");
+            System.out.printf("ID: %-3d %-10s %-12s %-4d\n", fitList.get(i).getMemberID(),
+                    fitList.get(i).getfName(), fitList.get(i).getlName(), fitList.get(i).getBirthYear());
         }
 
     }
@@ -57,11 +57,12 @@ public class Chairman {
     public void printCompMembers() {
         ArrayList<CompSwimmer> compList = filehandler.getCompList();
         for (int i = 0; i < compList.size(); i++) {
-            ui.print("ID: " + compList.get(i).getMemberID() + ", Name: " + compList.get(i).getfName() + " " +
-                    compList.get(i).getlName() + ", Birth year:  " + compList.get(i).getBirthYear() + "\n");
+            ui.print("ID: " + compList.get(i).getMemberID() + ", " + compList.get(i).getfName() + " " +
+                    compList.get(i).getlName() + ", " + compList.get(i).getBirthYear() + "\n");
         }
     }
 
+    //Method written by everyone (Pair-programming)
     private String userInputForNewMember() {
 
         ui.println("Insert members first name: ");
@@ -78,26 +79,17 @@ public class Chairman {
         boolean isComp = !isFitness;
 
         String compChoice = "noDiscipline";
-        if (isComp == true) {
-            compChoice = compChoice();
-        }
-        //TODO giv member en mulighed for at betal on the spot
+        if (isComp == true) compChoice = compChoice();
         System.out.println("Has the user payed? (1)yes (2)no");
         boolean hasPayed = ui.intToBool();
 
-//        System.out.println("Date for registration: ");
-//        //LocalDateTime.now().getYear()
-//        System.out.println("Has the member payed?");
-//
-//        // Print to see what it returns System.out.println(LocalDateTime.now().getYear());
-
         String newMemberData = fName + ";" + lName + ";" + birthYear + ";" + isActive + ";" + isFitness + ";" + isComp + ";"
                 + compChoice + ";" + "0.0" + ";" + hasPayed + ";";
-        //System.out.println(newMemberData); //For debugging
         return newMemberData;
 
     }
 
+    //Method written by everyone (Pair-programming)
     private String compChoice() {
         String choice = "";
 

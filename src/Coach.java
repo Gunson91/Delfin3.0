@@ -1,6 +1,5 @@
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
 public class Coach {
@@ -36,7 +35,7 @@ public class Coach {
     }
 
     //Method written by Emil, Laurits & Mathias
-    public void viewAgeSortedTeams() {
+    private void viewAgeSortedTeams() {
         ArrayList<CompSwimmer> compList = f.getCompList();
 
         ui.println("Competition swimmers under 18: ");
@@ -55,7 +54,7 @@ public class Coach {
     }
 
     // Method written by Mathias, Emil, Laurits & Martin
-    public void viewCompPersonalRecord() {
+    private void viewCompPersonalRecord() {
         int memberId;
         memberId = ui.readInt("Enter member ID: ");
         boolean validComp = false;
@@ -72,7 +71,7 @@ public class Coach {
         }
     }
 
-    public void registerNewRecord() {
+    private void registerNewRecord() {
         boolean validChoice = false;
         int memberID = -1;
         memberID = ui.readInt("Please input the ID of the member you want to change: ");
@@ -120,7 +119,7 @@ public class Coach {
     }
 
 
-    public void viewTop5() {
+    private void viewTop5() {
         sortTop5();
         Menu compMenu = new Menu("Choose the discipline", "Please type a number between 1 and 5: \n",
                 new String[]{"1. Crawl", "2. Breaststroke", "3. Butterfly", "4. Backstroke", "5. Medley"});
