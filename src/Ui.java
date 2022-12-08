@@ -26,7 +26,7 @@ public class Ui {
         boolean validChoice = false;
         int number = -1;
         while (!validChoice) {
-            println(msg);
+            print(msg);
             if (in.hasNextInt()) {
                 number = in.nextInt();
                 validChoice = true;
@@ -71,8 +71,9 @@ public class Ui {
                     System.out.println("Please type 1 or 2");
                 }
             } else {
-                System.out.println("Please type 1 or 2");
+                System.out.println("Please type a NUMBER; 1 or 2");
                 in.nextLine();
+                in.nextLine(); // If this is not here then it will print ^^ twice
             }
         }
         in.nextLine(); //scanner bug
@@ -81,5 +82,18 @@ public class Ui {
         } else {
             return false;
         }
+    }
+
+    public void logo() {
+        System.out.println("▓█████▄ ▓█████  ██▓      █████▒██▓ ███▄    █ ▓█████  ███▄    █");
+        System.out.println("▒██▀ ██▌▓█   ▀ ▓██▒    ▓██   ▒▓██▒ ██ ▀█   █ ▓█   ▀  ██ ▀█   █ ");
+        System.out.println("░██   █▌▒███   ▒██░    ▒████ ░▒██▒▓██  ▀█ ██▒▒███   ▓██  ▀█ ██▒");
+        System.out.println("░▓█▄   ▌▒▓█  ▄ ▒██░    ░▓█▒  ░░██░▓██▒  ▐▌██▒▒▓█  ▄ ▓██▒  ▐▌██▒");
+        System.out.println("░▒████▓ ░▒████▒░██████▒░▒█░   ░██░▒██░   ▓██░░▒████▒▒██░   ▓██░");
+        System.out.println(" ▒▒▓  ▒ ░░ ▒░ ░░ ▒░▓  ░ ▒ ░   ░▓  ░ ▒░   ▒ ▒ ░░ ▒░ ░░ ▒░   ▒ ▒");
+        System.out.println(" ░ ▒  ▒  ░ ░  ░░ ░ ▒  ░ ░      ▒ ░░ ░░   ░ ▒░ ░ ░  ░░ ░░   ░ ▒░");
+        System.out.println(" ░ ░  ░    ░     ░ ░    ░ ░    ▒ ░   ░   ░ ░    ░      ░   ░ ░ ");
+        System.out.println("   ░       ░  ░    ░  ░        ░           ░    ░  ░         ░ ");
+        System.out.println(" ░   ");
     }
 }

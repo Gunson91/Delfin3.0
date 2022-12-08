@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Cashier { //PairProgramming
 
-    //TODO opdater betalingsstaus ved nyt år
+    //TODO opdater betalingsstaus ved nyt år   //NeedToHave???
 
     Ui ui = new Ui();
     Filehandler f = new Filehandler();
@@ -29,6 +29,7 @@ public class Cashier { //PairProgramming
                 case 9:
                     ui.println("Going back to main menu...");
                     runWhile = false;
+                    break;
                 default:
                     ui.println("Invalid choice");
                     break;
@@ -71,15 +72,12 @@ public class Cashier { //PairProgramming
         int birthYear = -1;
         boolean isActive = false;
 
-
         for (int i = 0; i < allMemberList.size(); i++) {
             if (allMemberList.get(i).getMemberID() == iD) {
                 birthYear = allMemberList.get(i).getBirthYear();
                 isActive = allMemberList.get(i).isActive();
             }
         }
-
-
         if (!isActive) {
             return 500;
         }

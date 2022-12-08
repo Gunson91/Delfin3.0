@@ -30,6 +30,7 @@ public class Chairman {
                 case 9:
                     ui.println("Going back to main menu...");
                     runWhile = false;
+                    break;
                 default:
                     ui.println("Invalid choice");
                     break;
@@ -72,7 +73,6 @@ public class Chairman {
         ui.println("Insert members birth year: ");
         String birthYear = ui.readBirthYear();
         System.out.println("Does the user want an (1)Active or (2)Passive membership?");
-
         boolean isActive = ui.intToBool();
         System.out.println("Does the user want to have a (1)Fitness or (2)Competition membership?");
         boolean isFitness = ui.intToBool();

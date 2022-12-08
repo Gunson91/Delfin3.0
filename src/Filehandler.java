@@ -13,6 +13,7 @@ public class Filehandler {
     private ArrayList<FitnessSwimmer> fitnessList = new ArrayList<>();
     Ui ui = new Ui();
 
+    //Method written by Mathias
     public ArrayList getAllMembersList() {
         updateMemberList();
         return memberList;
