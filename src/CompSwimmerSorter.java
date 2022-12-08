@@ -14,11 +14,10 @@ public class CompSwimmerSorter implements Comparator<CompSwimmer> {
 
     @Override
     public int compare(CompSwimmer o1, CompSwimmer o2) {
-        double comparison = -1;
+        int comparison = -1;
         switch (chosenSorter){
-            case PB -> comparison = o1.getPb() - o2.getPb();
+            case PB -> comparison = Double.compare(o1.getPb() , o2.getPb());
         }
-
-        return (int) comparison;
+        return comparison;
     }
 }

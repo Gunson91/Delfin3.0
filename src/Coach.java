@@ -112,10 +112,10 @@ public class Coach {
 
         CompSwimmerSorter sortByPb = new CompSwimmerSorter(CompSwimmerSorter.ChosenSorter.PB);
         crawl.sort(sortByPb);
-        Collections.sort(breaststroke, sortByPb);
-        Collections.sort(backstroke, sortByPb);
-        Collections.sort(butterfly, sortByPb);
-        Collections.sort(medley, sortByPb);
+        breaststroke.sort(sortByPb);
+        backstroke.sort(sortByPb);
+        butterfly.sort(sortByPb);
+        medley.sort(sortByPb);
     }
 
 
@@ -152,8 +152,12 @@ public class Coach {
             ui.println("There are no competition swimmers in this discipline");
         } else {
             for (int i = 0; i < listname.size() && i < 5; i++) {
-                System.out.printf("%-6s%-13s%-15s\n", listname.get(i).getMemberID(), listname.get(i).getlName(), listname.get(i).getPb());
-                ui.println("----------------------------");
+                if(listname.get(i).getPb() > 0){
+                    System.out.printf("%-6s%-13s%-15s\n", listname.get(i).getMemberID(), listname.get(i).getlName(),
+                            listname.get(i).getPb());
+                    ui.println("----------------------------");
+                }
+
             }
         }
     }

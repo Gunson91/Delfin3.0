@@ -41,23 +41,28 @@ public class Cashier { //PairProgramming
         int price = -1;
         String pChoice = "";
         memberId = ui.readInt("Enter member ID: ");
-        //FIXME check om member findes
+
+
         if (memberId > allMemberList.size() || memberId < 0) {
             ui.println("This member does not exist");
-//            new Cashier().cashierMenu();
-        } else {
-            price = generatePrice(memberId);
-            ui.println("This member has to pay: " + price + " DKK");
+        }else {
+            if (allMemberList.get(memberId).hasPaid()) {
+                ui.println("This member has already paid");
 
-            pChoice = ui.readString("Confirm payment for member: " + memberId + "\n Enter true or false: ");
-
-            if (pChoice.equalsIgnoreCase("true")) {
-                f.editMember(memberId, 9, "true");
-
-            } else if (pChoice.equalsIgnoreCase("false")) {
-                f.editMember(memberId, 9, "false");
             } else {
-                ui.println("You didn't type \"true\" or \"false\", going back to cashier menu");
+                price = generatePrice(memberId);
+                ui.println("This member has to pay: " + price + " DKK");
+
+                pChoice = ui.readString("Confirm payment for member: " + memberId + "\n Enter true or false: ");
+
+                if (pChoice.equalsIgnoreCase("true")) {
+                    f.editMember(memberId, 9, "true");
+
+                } else if (pChoice.equalsIgnoreCase("false")) {
+                    f.editMember(memberId, 9, "false");
+                } else {
+                    ui.println("You didn't type \"true\" or \"false\", going back to cashier menu");
+                }
             }
         }
     }
